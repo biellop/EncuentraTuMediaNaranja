@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/signInFragmet">
+
+    <fragment
+        android:id="@+id/signInFragmet"
+        android:name="com.example.encuentratumedianaranja.signInFragmet"
+        android:label="fragment_sign_in_fragmet"
+        tools:layout="@layout/fragment_sign_in_fragmet" />
+    <fragment
+        android:id="@+id/signOutFragment"
+        android:name="com.example.encuentratumedianaranja.signOutFragment"
+        android:label="fragment_sign_out"
+        tools:layout="@layout/fragment_sign_out" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.encuentratumedianaranja.profileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.encuentratumedianaranja.homeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/fragment_chat"
+        android:name="com.example.encuentratumedianaranja.fragment_chat"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+</navigation>

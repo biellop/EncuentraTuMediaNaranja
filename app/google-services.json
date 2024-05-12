@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "334819046770",
+    "project_id": "medianaranja-cc747",
+    "storage_bucket": "medianaranja-cc747.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334819046770:android:814de367e72d9c49c559eb",
+        "android_client_info": {
+          "package_name": "com.example.encuentratumedianaranja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334819046770-1dutcdcg11au9ucjk0n8pgch87pvv6ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8p7WLFdAQleSDfBK9Op7I7zDmpqTcufE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334819046770-1dutcdcg11au9ucjk0n8pgch87pvv6ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
