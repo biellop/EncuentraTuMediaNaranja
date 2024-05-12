@@ -34,14 +34,14 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/like_on"
+                android:background="@drawable/ic_cruz"
                 android:layout_marginHorizontal="55dp"/>
 
             <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/ic_cruz"
-                android:layout_marginHorizontal="55dp"/>
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/like_on"
+                android:layout_marginHorizontal="40dp"/>
 
         </LinearLayout>
     </LinearLayout>
