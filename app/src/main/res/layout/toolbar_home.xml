@@ -13,12 +13,13 @@
 
         <ImageButton
             android:id="@+id/botonTienda"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"
             android:contentDescription="tienda"
             android:layout_gravity="start"
-            android:background="@null" />
+            android:background="@null"
+            android:layout_marginHorizontal="20dp"/>
 
     </androidx.appcompat.widget.Toolbar>
 
