@@ -8,19 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.widget.ImageButton;
+
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class fragment_chat extends Fragment {
+public class list_chats_fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_chat, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_list_chats, container, false);
 
         RecyclerView recyclerView = rootView.findViewById(R.id.recycler_view_profiles);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -62,7 +61,7 @@ public class fragment_chat extends Fragment {
         @NonNull
         @Override
         public ProfileViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chats, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_chats, parent, false);
             return new ProfileViewHolder(view);
         }
 

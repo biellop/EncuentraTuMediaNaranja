@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/fragment_chat"
-        android:name="com.example.encuentratumedianaranja.fragment_chat"
+        android:name="com.example.encuentratumedianaranja.list_chats_fragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_list_chats" />
 </navigation>
