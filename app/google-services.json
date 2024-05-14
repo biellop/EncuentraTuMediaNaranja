@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "334819046770",
-    "project_id": "medianaranja-cc747",
-    "storage_bucket": "medianaranja-cc747.appspot.com"
+    "project_number": "296562752080",
+    "project_id": "appmedianaranja-f0503",
+    "storage_bucket": "appmedianaranja-f0503.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:334819046770:android:814de367e72d9c49c559eb",
+        "mobilesdk_app_id": "1:296562752080:android:b907cc3e9c23d247a66f55",
         "android_client_info": {
           "package_name": "com.example.encuentratumedianaranja"
         }
       },
       "oauth_client": [
         {
-          "client_id": "334819046770-1dutcdcg11au9ucjk0n8pgch87pvv6ab.apps.googleusercontent.com",
+          "client_id": "296562752080-t9o7uv71kptpra0dr1fd3ueispq0qdes.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.encuentratumedianaranja",
+            "certificate_hash": "bb6e8f302f7b7cde712ec82590b40c363584bcc1"
+          }
+        },
+        {
+          "client_id": "296562752080-kuf2mlodqkv8thdnqs1l7esu976a7v46.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC8p7WLFdAQleSDfBK9Op7I7zDmpqTcufE"
+          "current_key": "AIzaSyB1a2fK0d_rCs8qNc1ZdfpVnLwoLPgKQjI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "334819046770-1dutcdcg11au9ucjk0n8pgch87pvv6ab.apps.googleusercontent.com",
+              "client_id": "296562752080-kuf2mlodqkv8thdnqs1l7esu976a7v46.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

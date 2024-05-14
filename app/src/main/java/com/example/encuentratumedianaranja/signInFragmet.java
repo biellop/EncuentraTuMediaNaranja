@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -36,16 +37,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import org.jetbrains.annotations.Nullable;
-
 public class signInFragmet extends Fragment {
 
     NavController navController;
     private LinearLayout signInForm;
-    private ProgressBar signInProgressBar;
     private FirebaseAuth mAuth;
     private SignInButton googleSignInButton;
     private ActivityResultLauncher<Intent> activityResultLauncher;
+
+    public signInFragmet(){}
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,11 +57,10 @@ public class signInFragmet extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        googleSignInButton = view.findViewById(R.id.googleSignInButton);
         navController = Navigation.findNavController(view);
         signInForm = view.findViewById(R.id.signInForm);
-        signInProgressBar = view.findViewById(R.id.signInProgressBar);
         mAuth = FirebaseAuth.getInstance();
+        googleSignInButton = view.findViewById(R.id.googleSignInButton);
 
         activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -71,8 +70,7 @@ public class signInFragmet extends Fragment {
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             Intent data = result.getData();
                             try {
-                                firebaseAuthWithGoogle(GoogleSignIn.getSignedInAccountFromIntent(data
-                                ).getResult(ApiException.class));
+                                firebaseAuthWithGoogle(GoogleSignIn.getSignedInAccountFromIntent(data).getResult(ApiException.class));
                             } catch (ApiException e) {
                                 Log.e("ABCD", "signInResult:failed code=" +
                                         e.getStatusCode());
@@ -87,29 +85,23 @@ public class signInFragmet extends Fragment {
                 accederConGoogle();
             }
         });
-    }
 
-    private void actualizarUI(FirebaseUser currentUser) {
-        if(currentUser != null){
-            navController.navigate(R.id.homeFragment);
-        }
     }
 
     private void accederConGoogle() {
-        GoogleSignInClient googleSignInClient;
-        googleSignInClient = GoogleSignIn.getClient(requireActivity(), new
-                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build());
+        GoogleSignInClient googleSignInClient =
+                GoogleSignIn.getClient(requireActivity(), new
+                        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build());
         activityResultLauncher.launch(googleSignInClient.getSignInIntent());
     }
-
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        if(acct == null) return;
-        signInProgressBar.setVisibility(View.VISIBLE);
+        if (acct == null) return;
         signInForm.setVisibility(View.GONE);
-        mAuth.signInWithCredential(GoogleAuthProvider.getCredential(acct.getIdToken(), null))
+        mAuth.signInWithCredential(GoogleAuthProvider.getCredential(acct.getIdToken(
+                ), null))
                 .addOnCompleteListener(requireActivity(), new
                         OnCompleteListener<AuthResult>() {
                             @Override
@@ -120,10 +112,15 @@ public class signInFragmet extends Fragment {
                                 } else {
                                     Log.e("ABCD", "signInWithCredential:failure",
                                             task.getException());
-                                    signInProgressBar.setVisibility(View.GONE);
                                     signInForm.setVisibility(View.VISIBLE);
                                 }
                             }
                         });
+    }
+
+    private void actualizarUI(FirebaseUser currentUser) {
+        if(currentUser != null){
+            navController.navigate(R.id.homeFragment);
+        }
     }
 }

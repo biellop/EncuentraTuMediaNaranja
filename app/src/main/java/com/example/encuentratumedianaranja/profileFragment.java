@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
@@ -20,20 +21,20 @@ public class profileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
 
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
-            activity.setSupportActionBar(view.findViewById(R.id.toolbar));
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-            NavHostFragment navHostFragment = (NavHostFragment) activity.getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-            if (navHostFragment != null) {
-                NavController navController = navHostFragment.getNavController();
-                BottomNavigationView bottomNavView = view.findViewById(R.id.bottom_nav_view);
-                NavigationUI.setupWithNavController(bottomNavView, navController);
+        // Aquí configuramos el clic en la toolbar_perfil para navegar
+        view.findViewById(R.id.toolbar_perfil).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Reemplaza "nav_profile" con el ID de tu gráfico de navegación
+                Navigation.findNavController(v).navigate(R.id.mobile_navigation);
             }
-        }
-
-        return view;
+        });
     }
 }
