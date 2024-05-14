@@ -4,15 +4,10 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/homeFragment"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/profileFragment"
-            android:title="@string/menu_home" />
+
         <item
             android:id="@+id/signOutFragment"
-            android:title="@string/menu_home" />
+            android:title="Cerrar Sesión" />
     </group>
 
 </menu>
