@@ -7,9 +7,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -68,14 +70,29 @@ public class MainActivity extends AppCompatActivity {
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+
+        ;
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-      //  NavigationUI.setupWithNavController(contentView, navController);
         BottomNavigationView bottom = findViewById(R.id.bottom_nav_view);
-       NavigationUI.setupWithNavController(bottom, navController);
+        NavigationUI.setupWithNavController(bottom, navController);
 
         // Eliminar el botón flotante de acción
         //binding.appBarMain.fab.setVisibility(View.GONE);
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                // Verificar si el fragmento actual es el FragmentHome
+                if (destination.getId() == R.id.signInFragmet) {
+                    // Ocultar el BottomNavigationView en el FragmentHome
+                    bottom.setVisibility(View.GONE);
+                } else {
+                    // Mostrar el BottomNavigationView en otros fragmentos
+                    bottom.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         binding.appBarMain.toolbar.setVisibility(View.GONE);
     }
 
