@@ -16,7 +16,6 @@ import org.jetbrains.annotations.Nullable;
 public class homeFragment extends Fragment {
 
     NavController navController;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

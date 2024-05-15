@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -46,6 +45,7 @@ public class signInFragmet extends Fragment {
     private ActivityResultLauncher<Intent> activityResultLauncher;
 
     public signInFragmet(){}
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,8 +72,7 @@ public class signInFragmet extends Fragment {
                             try {
                                 firebaseAuthWithGoogle(GoogleSignIn.getSignedInAccountFromIntent(data).getResult(ApiException.class));
                             } catch (ApiException e) {
-                                Log.e("ABCD", "signInResult:failed code=" +
-                                        e.getStatusCode());
+                                Log.e("ABCD", "signInResult:failed code=" + e.getStatusCode());
                             }
                         }
                     }
@@ -97,25 +96,25 @@ public class signInFragmet extends Fragment {
                         .build());
         activityResultLauncher.launch(googleSignInClient.getSignInIntent());
     }
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        if (acct == null) return;
+        if (acct == null || signInForm == null) return; // Verificar signInForm no es nulo
         signInForm.setVisibility(View.GONE);
-        mAuth.signInWithCredential(GoogleAuthProvider.getCredential(acct.getIdToken(
-                ), null))
-                .addOnCompleteListener(requireActivity(), new
-                        OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Log.e("ABCD", "signInWithCredential:success");
-                                    actualizarUI(mAuth.getCurrentUser());
-                                } else {
-                                    Log.e("ABCD", "signInWithCredential:failure",
-                                            task.getException());
-                                    signInForm.setVisibility(View.VISIBLE);
-                                }
+        mAuth.signInWithCredential(GoogleAuthProvider.getCredential(acct.getIdToken(), null))
+                .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.e("ABCD", "signInWithCredential:success");
+                            actualizarUI(mAuth.getCurrentUser());
+                        } else {
+                            Log.e("ABCD", "signInWithCredential:failure", task.getException());
+                            if (signInForm != null) {
+                                signInForm.setVisibility(View.VISIBLE); // Restaurar la visibilidad en caso de error
                             }
-                        });
+                        }
+                    }
+                });
     }
 
     private void actualizarUI(FirebaseUser currentUser) {
