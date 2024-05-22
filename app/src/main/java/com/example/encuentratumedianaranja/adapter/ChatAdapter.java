@@ -43,7 +43,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            messageTextView = itemView.findViewById(R.id.messageTextView);
+            messageTextView = itemView.findViewById(R.id.text_view_message);
         }
 
         public void bind(Message message) {

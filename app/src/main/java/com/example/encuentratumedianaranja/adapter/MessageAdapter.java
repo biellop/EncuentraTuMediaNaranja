@@ -43,7 +43,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textViewMessage = itemView.findViewById(R.id.messageTextView);  // Asegúrate de que este ID es correcto
+            textViewMessage = itemView.findViewById(R.id.text_view_message);  // Asegúrate de que este ID es correcto
         }
 
         public void bind(Message message) {
