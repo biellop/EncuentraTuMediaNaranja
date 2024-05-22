@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         android:background="#FF9800"
         android:orientation="vertical">
-        <include layout = "@layout/toolbar_perfil"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/foto_perfil"
